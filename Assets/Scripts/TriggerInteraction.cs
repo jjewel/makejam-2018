@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// Load scene on trigger
+// Do thing on trigger interact with player, attach to object with trigger collider
 public class TriggerInteraction : MonoBehaviour
 {
-	public int loadSceneIndex = 1;
-	public float sceneFadeTime = 2f;
-
 	public void OnTriggerEnter (Collider other)
 	{
 		if (other.tag == "Player") {
-			MenuManager.instance.StartFadeToScene (loadSceneIndex, sceneFadeTime);
+			// Do the thing
+            // eg. GetComponent<Animator>().SetTrigger("PlayMyAnimation");
+            //MenuManager.instance.StartFadeToScene (loadSceneIndex, sceneFadeTime);
 		}
 	}
 }
