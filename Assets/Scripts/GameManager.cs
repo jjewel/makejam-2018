@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 // Handles enabling the player on start, disabling the start screen GUI, enabling endgame GUI
 public class GameManager : MonoBehaviour {
-    int myPhase = -1;
+    int myPhase = 0;
     public Phase[] phases;
     Player player;
     Camera mainCamera;
@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour {
     // Check current phase
     public int PhaseCheck()
     {
-        int currentPhase = -1;
+        int currentPhase = 0;
         float playerDistance = player.transform.position.magnitude;
 
         foreach (Phase phase in phases)
@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour {
     public void PhaseChange(int from, int to)
     {
         StartCoroutine(FadeDown(phases[from].ambientAudio, audioFadeSpeed, minVolume));
-        StartCoroutine(FadeUp(phases[to].ambientAudio, audioFadeSpeed, maxVolume));
+        //StartCoroutine(FadeUp(phases[to].ambientAudio, audioFadeSpeed, maxVolume));
         targetColour = phases[to].backgroundColour;
     }
 

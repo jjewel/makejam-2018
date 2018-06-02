@@ -3,25 +3,47 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-    public float speed = 1f;
+    public float currentSpeed;
+
+    private float startX;
+
+    private Animator animate;
+
+    // Use this for initialization
+    void Start () {
+        startX = transform.localScale.x;
+        animate = GetComponent<Animator>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
-
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
-
-        // Look the intended movement direction
-        if (x > 0.1f)
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
-           // flip spritex false
-
+            transform.Translate(Vector3.left * currentSpeed);
+            transform.localScale = new Vector3(-startX, transform.localScale.y, transform.localScale.z);
         }
-        else if (x < -0.1f)
+        if (Input.GetKey(KeyCode.RightArrow))
         {
-            // flip spritex true
+            transform.Translate(Vector3.right * currentSpeed);
+            transform.localScale = new Vector3(startX, transform.localScale.y, transform.localScale.z);
+        }
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            transform.Translate(Vector3.up * currentSpeed);
+        }
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            transform.Translate(Vector3.down * currentSpeed);
         }
 
-        transform.Translate(new Vector3(x, y, 0).normalized * speed * Time.deltaTime);
+        if (Input.anyKey)
+        {
+            animate.SetBool("Walking", true);
+        }
+        else
+        {
+            animate.SetBool("Walking", false);
+        }
+
     }
 }

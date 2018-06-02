@@ -5,12 +5,16 @@ using UnityEngine;
 // Do thing on trigger interact with player, attach to object with trigger collider
 public class TriggerInteraction : MonoBehaviour
 {
-	public void OnTriggerEnter (Collider other)
+	public void OnTriggerEnter2D (Collider2D other)
 	{
-		if (other.tag == "Player") {
-			// Do the thing
-            // eg. GetComponent<Animator>().SetTrigger("PlayMyAnimation");
-            //MenuManager.instance.StartFadeToScene (loadSceneIndex, sceneFadeTime);
-		}
-	}
+
+
+            NewMethod();
+
+    }
+
+    private static void NewMethod()
+    {
+        UIManager.ins.Quit();
+    }
 }

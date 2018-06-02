@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
+    public static UIManager ins;
     //Player player;
     public CanvasGroup fadeOutImageCanvasGroup, titleCanvasGroup;
     [Range(0.1f, 5f)]
@@ -14,6 +15,7 @@ public class UIManager : MonoBehaviour {
     void Awake ()
     {
         //player = FindObjectOfType<Player>();
+        ins = this;
     }
 
     // Update is called once per frame
